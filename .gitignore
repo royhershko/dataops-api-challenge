@@ -1,21 +1,3 @@
-# OS files
-.DS_Store
-Thumbs.db
-
-# Logs
+*.zip
 *.log
-
-# Python cache
 __pycache__/
-*.py[cod]
-
-# Environments
-.env
-.venv
-
-# Editor folders
-.vscode/
-.idea/
-
-# Backup files
-*~
