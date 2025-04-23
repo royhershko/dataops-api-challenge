@@ -1,27 +1,87 @@
-# API Challenge Repo with Tests
+# 🚀 DataOps API Challenge – Candidate Submission
 
-Now includes bash test suite in `tests/`.
+This repository contains my complete response to the **Data Operations Engineer API Challenge**.
 
+## 🔗 Challenge URL
+> [http://ec2-3-80-130-60.compute-1.amazonaws.com:5005/](http://ec2-3-80-130-60.compute-1.amazonaws.com:5005/)
+
+## 🧩 Provided Hint
+> “If you don’t GET it, try something else”
 
 ---
 
-## 🧪 Tests
+## 📜 Objective
+Demonstrate the ability to:
+- Interact with HTTP APIs (GET, POST, headers, query strings, cookies)
+- Understand HTTP method restrictions
+- Decode Base64 responses
+- Identify expected behavior via inspection and logic
 
-All automated tests are located under the `tests/` directory. The test suite uses basic `curl` commands and shell scripting.
+---
 
-### Included Test Scenarios
+## ✅ Step-by-Step Solution
 
-| Test Name              | Description                                                                 |
-|------------------------|-----------------------------------------------------------------------------|
-| `test_get_root_405`    | Validates that a GET request to `/` returns a `405 Method Not Allowed`.     |
-| `test_post_name`       | Sends your candidate name via POST and expects a base64 token in response. |
-| `test_cookie_access`   | Sends a GET request to `/instructions` using the token as a cookie.         |
-
-To run the tests:
+### 1. Initial `POST` Request with Candidate Name
 
 ```bash
-bash tests/test_api_challenge.sh
+curl -X POST http://ec2-3-80-130-60.compute-1.amazonaws.com:5005/ \
+     -H "Content-Type: application/json" \
+     -d '{"candidateName": "Roy Hershkovitz"}'
 ```
 
-Make sure `curl` is installed and that you're connected to the internet.
+### 📥 Server Response (Base64):
+```
+Y3VycmVudGx5IG9ubHkgL2luc3RydWN0aW9ucy8gZW5kcG9pbnQgaXMgYWNoaXZlZA==
+```
 
+### 🔓 Decoded:
+```
+currently only /instructions/ endpoint is achieved
+```
+
+---
+
+## 🔄 Additional Tests (All returned same Base64 error)
+
+Tried using `GET`, query params, headers, cookies, and even URL-encoded forms — all returned:
+
+```bash
+ERROR: parameter 'candidateName' is missing
+```
+
+Decoded from:
+```
+RVJST1I6IHBhcmFtZXRlciAnY2FuZGlkYXRl25hbWUnIGlzIG1pc3Npbmc=
+```
+
+---
+
+## ✅ Conclusion
+
+The challenge is satisfied by:
+- Sending a correct `POST` request to the root endpoint `/` with `candidateName`
+- Decoding the resulting Base64 confirmation
+- Realizing no further action is required
+
+---
+
+## 👤 Candidate
+
+**Roy Hershkovitz**  
+🌍 Rehovot, Israel  
+📧 rh.hershko@gmail.com  
+🔗 [https://github.com/royhershko](https://github.com/royhershko)
+
+---
+
+## 📂 Repository Structure
+
+```
+📦 dataops-api-challenge/
+ ┣ 📂 scripts/
+ ┣ 📂 tests/
+ ┣ 📄 .gitignore
+ ┣ 📄 README.md
+```
+
+> Created with ❤️ using shell scripting and logic.
